@@ -1,6 +1,7 @@
 import Dashboard from './pages/Dashboard'
 import Menu from './pages/menu'
 import Footer from './pages/footer'
+import Wallet from './pages/wallet'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ function App() {
         <div className='flex-grow pt-16'> 
           <Routes>
             <Route path='/' element={<Dashboard />} />
+            <Route path='/wallet' element={<Wallet />} />
           </Routes>      
         </div>
         <Footer />

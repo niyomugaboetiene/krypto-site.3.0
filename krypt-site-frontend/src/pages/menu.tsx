@@ -18,7 +18,9 @@ const Menu = () => {
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/wallet')
                         }}>Wallet</p>
-                        <p className="cursor-pointer hover:text-yellow-300 transition">About Us</p>
+                        <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
+                            navigate('/about');
+                        }}>About Us</p>
                         <p className="cursor-pointer hover:text-yellow-300 transition">Contact Us</p>
                     </div>
                 </div>

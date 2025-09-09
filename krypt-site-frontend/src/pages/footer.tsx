@@ -3,7 +3,7 @@ import { SiBitcoin, SiEthereum } from 'react-icons/si';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-black via-blue-500 to-gray-500 text-white py-10 mt-10">
+    <footer className="bg-gradient-to-b from-black via-blue-500 to-gray-500 text-white py-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <div className="flex justify-center items-center mb-3">

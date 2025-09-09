@@ -2,7 +2,7 @@ import frontend from "../../public/frontend.gif";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
         <aside className="max-w-md text-lg md:text-xl text-white font-bold mb-8 md:mb-0 md:mr-8">
           Welcome to <span className="font-extrabold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">Crypto Site</span>, 

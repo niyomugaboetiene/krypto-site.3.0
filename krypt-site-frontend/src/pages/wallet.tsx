@@ -1,7 +1,13 @@
+import { useState } from "react";
 import wallet from "../../public/wallet.gif";
 import { FaWallet } from "react-icons/fa";
 
 const Wallet = () => {
+    const [account, setAccount] = useState(null);
+    const [balance, setBalance] = useState("0")
+    const [network, setNetwork] = useState("Not Connected");
+    const [recipient, setRecipient] = useState("");
+    const [amount, setAmount] = useState("");
 
     return (
           <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">

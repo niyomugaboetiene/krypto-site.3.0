@@ -28,10 +28,54 @@ const Wallet = () => {
                     </div>
                 </aside>
                 
-                <aside className="w-full lg:w-full ">
-                    <div className="max-w-md">
-                        <label htmlFor="">Receiver Address</label>
+                <aside className="w-full lg:w-3/5 bg-gray-900 bg-opacity-50 p-8 rounded-xl shadow-2xl border border-purple-400 border-opacity-50">
+                  <h2 className="text-2xl font-bold text-white mb-6 text-center">Send Tokens</h2>
+                  <p className="text-gray-300 text-center mb-8">
+                    Connect Your wallet to enable transfer
+                  </p>
+
+                  <div className="space-y-6 opacity-50">
+                    <div>
+                        <label className="block text-gray-400 text-sm font-medium mb-2">
+                            Recipient Address
+                        </label>
+                        <input type="text"
+                          placeholder="0x...."
+                          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                          disabled
+                        />
                     </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-gray-400 text-sm font-medium mb-2">
+                                Amount
+                            </label>
+
+                            <input type="text" 
+                               placeholder="0.0"
+                               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-400 text-sm font-medium mb-2">
+                                Token
+                            </label>
+                            <select 
+                             className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2
+                              focus:ring-purple-500">
+                                <option>ETH</option>
+                                <option>USDT</option>
+                                <option>DAI</option>
+                              </select>
+                        </div>
+                    </div>
+
+                    <button 
+                      className="w-full bg-gray-700 text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed" disabled>
+                        Connect Wallet to Send
+                      </button>
+                  </div>
                 </aside>
             </div>
       

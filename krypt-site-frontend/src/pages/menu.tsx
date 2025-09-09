@@ -21,7 +21,7 @@ const Menu = () => {
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/about');
                         }}>About Us</p>
-                        <p className="cursor-pointer hover:text-yellow-300 transition">Contact Us</p>
+                        <a href="https://niyomugaboetiene.onrender.com/contact" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-yellow-300 transition">Contact Us</a>
                     </div>
                 </div>
             </div>

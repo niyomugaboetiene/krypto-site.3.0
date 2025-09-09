@@ -4,7 +4,7 @@ import { FaWallet } from "react-icons/fa";
 import { ethers } from "ethers";
 
 const Wallet = () => {
-    const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState<string | null>(null);
     const [balance, setBalance] = useState("0")
     const [network, setNetwork] = useState("Not Connected");
     const [recipient, setRecipient] = useState("");

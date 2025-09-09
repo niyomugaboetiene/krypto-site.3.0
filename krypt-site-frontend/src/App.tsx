@@ -2,6 +2,7 @@ import Dashboard from './pages/Dashboard'
 import Menu from './pages/menu'
 import Footer from './pages/footer'
 import Wallet from './pages/wallet'
+import About from './pages/about'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/wallet' element={<Wallet />} />
+            <Route path='/about' element={<About />} />
           </Routes>      
         </div>
         <Footer />

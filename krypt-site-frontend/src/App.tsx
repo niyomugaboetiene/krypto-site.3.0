@@ -11,10 +11,10 @@ function App() {
                 <Route element={<Menu />}>
                     <Route path='/' element={<Dashboard />} />
                 </Route>
-                <Route path='/footer' element={<Footer />} />
            </Routes>      
         </div>
-
+        
+        <Footer />
        </div>
     
     </BrowserRouter>

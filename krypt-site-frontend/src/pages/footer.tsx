@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-black via-blue-500 to-gray-500 text-white py-10 mt-10">
       <div className="container mx-auto px-4">
-        {/* Buy coffee section */}
         <div className="text-center mb-8">
           <div className="flex justify-center items-center mb-3">
             <FaCoffee className="text-amber-400 text-2xl mr-2" />
@@ -28,7 +27,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social connections */}
         <div className="text-center mb-8">
           <p className="text-lg font-semibold mb-4">Connect with me</p>
           <div className="flex justify-center space-x-6">
@@ -73,7 +71,6 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Copyright */}
         <div className="text-center text-gray-300 text-sm border-t border-gray-700 pt-6">
           © {new Date().getFullYear()} Krypto Site. All rights reserved
         </div>

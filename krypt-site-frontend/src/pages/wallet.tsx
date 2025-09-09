@@ -15,6 +15,7 @@ const Wallet = () => {
         if (window.ethereum) {
             try {
                 const provider = new ethers.BrowserProvider(window.ethereum);
+                // allow ethereum to ask user for persmission to expose their wallet
                 await provider.send("eth_requestAccounts", []);
                 const signer = await provider.getSigner();
                 const userAddress = await signer.getAddress();
@@ -22,7 +23,9 @@ const Wallet = () => {
                 const netWork = await provider.getNetwork();
 
                 setAccount(userAddress);
+                // format balacne into WEI
                 setBalance(ethers.formatUnits(balance));
+                // get network user is connected to like sepolia, plygon, mainnet 
                 setNetwork(netWork.name);
                 
             } catch (error) {

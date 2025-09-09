@@ -5,10 +5,10 @@ import { ethers } from "ethers";
 
 const Wallet = () => {
     const [account, setAccount] = useState<string | null>(null);
-    const [balance, setBalance] = useState("0")
-    const [network, setNetwork] = useState("Not Connected");
-    const [recipient, setRecipient] = useState("");
-    const [amount, setAmount] = useState("");
+    const [balance, setBalance] = useState<string>("0")
+    const [network, setNetwork] = useState<string>("Not Connected");
+    const [recipient, setRecipient] = useState<string>("");
+    const [amount, setAmount] = useState<string>("");
 
 
     const ConnectToWallet = async () => {

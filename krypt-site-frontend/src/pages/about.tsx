@@ -161,11 +161,11 @@ const About = () => {
           {/* Stats Section */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-20">
             <div className="bg-gray-900/40 backdrop-blur-md rounded-xl p-6 text-center border border-white/10">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">1K+</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">200+</div>
               <div className="text-blue-200">Active Users</div>
             </div>
             <div className="bg-gray-900/40 backdrop-blur-md rounded-xl p-6 text-center border border-white/10">
-              <div className="text-3xl font-bold text-green-400 mb-2">$100K+</div>
+              <div className="text-3xl font-bold text-green-400 mb-2">$1+</div>
               <div className="text-blue-200">Transactions</div>
             </div>
             <div className="bg-gray-900/40 backdrop-blur-md rounded-xl p-6 text-center border border-white/10">

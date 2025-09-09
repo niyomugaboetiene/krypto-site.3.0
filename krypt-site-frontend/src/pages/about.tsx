@@ -92,6 +92,7 @@ const About = () => {
                 <p className="text-blue-200 text-sm">
                   Blockchain expert with a passion for decentralized finance and Web3 technologies.
                 </p>
+                
                 <div className="flex justify-center space-x-4 mt-5">
                   <button className="text-blue-400 hover:text-blue-300 transition-colors">
                     <span className="text-lg">📱</span>

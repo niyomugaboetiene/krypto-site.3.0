@@ -184,7 +184,10 @@ const About = () => {
             <p className="text-xl text-blue-200 max-w-2xl mx-auto mb-8">
               Join thousands of users who are already managing their crypto assets with our secure wallet.
             </p>
-            <button className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl font-bold text-gray-900 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-2xl">
+            <button className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl font-bold text-gray-900 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-2xl"
+              onClick={() => {
+                navigate('/wallet');
+              }}>
               Connect Your Wallet Now
             </button>
           </div>

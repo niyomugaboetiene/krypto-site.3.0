@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
+    const navigate = useNavigate();
     return (
         <>
             <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-800 via-purple-500 p-14 to-blue-600 shadow-lg rounded">
@@ -10,8 +12,12 @@ const Menu = () => {
                         KRYPTO SITE
                     </button>
                     <div className="flex text-center justify-center font-bold text-white space-x-4 md:space-x-8 text-md md:text-lg">
-                        <p className="cursor-pointer hover:text-yellow-300 transition">Home</p>
-                        <p className="cursor-pointer hover:text-yellow-300 transition">Wallet</p>
+                        <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
+                            navigate('/')
+                        }}>Home</p>
+                        <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
+                            navigate('/wallet')
+                        }}>Wallet</p>
                         <p className="cursor-pointer hover:text-yellow-300 transition">About Us</p>
                         <p className="cursor-pointer hover:text-yellow-300 transition">Contact Us</p>
                     </div>

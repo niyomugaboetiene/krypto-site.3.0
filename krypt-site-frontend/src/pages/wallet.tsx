@@ -6,7 +6,6 @@ const Wallet = () => {
     return (
           <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
             <div className="flex flex-col lg:flex-row items-start justify-center gap-10 max-w-6xl mx-auto">
-                {/* Left side - Wallet GIF and Connect Button */}
                 <aside className="w-full lg:w-2/5 flex flex-col items-center">
                     <img 
                         src={wallet} 

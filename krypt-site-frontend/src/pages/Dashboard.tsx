@@ -1,6 +1,7 @@
 import frontend from "../../public/frontend.gif";
 
 const Dashboard = () => {
+  
   return (
     <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">

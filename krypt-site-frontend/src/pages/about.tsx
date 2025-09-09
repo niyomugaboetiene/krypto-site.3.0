@@ -75,9 +75,9 @@ const About = () => {
 
           <div className="bg-gray-900/30 backdrop-blur-md rounded-3xl border border-white/10 p-12 shadow-xl">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Our Team</h2>
+              <h2 className="text-4xl font-bold mb-4">My Team</h2>
               <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-                We are a small team of blockchain enthusiasts, developers, and designers 
+                I'm a small team of blockchain enthusiast, developer, and designer
                 working to bring Web3 closer to everyone.
               </p>
             </div>

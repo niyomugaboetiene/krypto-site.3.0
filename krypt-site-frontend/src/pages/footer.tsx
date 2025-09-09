@@ -1,5 +1,5 @@
-import { FaTwitter, FaFacebook, FaInstagram, FaEnvelope, FaCoffee, FaCopy } from 'react-icons/fa';
-import { SiBitcoin, SiEthereum } from 'react-icons/si';
+import { FaTwitter, FaFacebook, FaDollarSign, FaInstagram, FaEnvelope, FaCoffee, FaCopy } from 'react-icons/fa';
+import { SiBitcoin, SiEthereum, } from 'react-icons/si';
 import { useState } from 'react';
 
 const Footer = () => {
@@ -51,6 +51,10 @@ const Footer = () => {
               <div className="flex items-center">
                 <SiEthereum className="text-purple-500 mr-1" />
                 <span className="text-xs">ETH</span>
+              </div>
+              <div className="flex items-center">
+                <FaDollarSign className="text-yellow-500 mr-1" />
+                <span className="text-xs">USDT</span>
               </div>
             </div>
           </div>

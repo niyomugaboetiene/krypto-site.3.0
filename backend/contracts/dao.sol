@@ -13,7 +13,9 @@ contract DAO {
 
     function CreateProposal(string memory _description) {
         proposals.push(Proposal({
-            description: _description
-        }))
+            description: _description,
+            voteCount: 0,
+            hasVoted: false
+        }));
     }
 }

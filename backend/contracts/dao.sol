@@ -9,6 +9,7 @@ contract DAO {
     }
 
     Proposal[] public proposals;
+    
     mapping(address => bool) public HasVoted;
 
     function CreateProposal(string memory _description) {

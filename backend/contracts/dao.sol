@@ -12,6 +12,8 @@ contract DAO {
     mapping(address => bool) public HasVoted;
 
     function CreateProposal(string memory _description) {
-        
+        proposals.push(Proposal({
+            description: _description
+        }))
     }
 }

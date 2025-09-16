@@ -3,7 +3,7 @@ import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.js
 import { useState } from "react";
 const ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
-export async function DAO () {
+async function DAO () {
     const [account, setAccount] = useState("");
     const [description, setDescription] = useState("");
     const [proposal, setProposal] = useState("");
@@ -48,3 +48,4 @@ return (
 )
 }
 
+export default DAO;

@@ -3,7 +3,7 @@ import Menu from './pages/menu'
 import Footer from './pages/footer'
 import Wallet from './pages/wallet'
 import About from './pages/about'
-import { DAO } from './pages/dao'
+import DAO  from './pages/dao'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 

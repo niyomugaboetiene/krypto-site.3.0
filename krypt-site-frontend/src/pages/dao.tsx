@@ -38,16 +38,17 @@ async function createProposal() {
 }
 
 return (
-    <div>
-        <button onClick={ConnectToWallet}>Connect</button>
-
-        <div>
+    <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
+        <aside>
+           <button onClick={ConnectToWallet}>Connect</button>
+        </aside>
+        <aside>
             <input type="text"  
             value={description}
                onChange={(e) => setDescription(e.target.value)}
             />
             <button onClick={createProposal}>Create</button>
-        </div>
+        </aside>
     </div>
 )
 }

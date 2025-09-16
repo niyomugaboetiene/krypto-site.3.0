@@ -3,21 +3,25 @@ import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.js
 import { useState } from "react";
 const ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
-async function Dao () {
+function Dao () {
     const [account, setAccount] = useState("");
     const [description, setDescription] = useState("");
     const [proposal, setProposal] = useState("");
 
    async function ConnectToWallet() {
-      if (window.ethereum) {
-          alert("Connect to metamask firts");
+      if (!window.ethereum) {
+          alert("Connect to metamask first");
           return;
     }
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const accounts = await provider.send("eth_requestAccounts", []);
-    setAccount(accounts[0]);
 
-    
+    try {
+         const provider = new ethers.BrowserProvider(window.ethereum);
+         const accounts = await provider.send("eth_requestAccounts", []);
+         setAccount(accounts[0]);
+         alert("Connected successfully");
+    } catch (error) {
+        console.error("ERROR:", error);
+    }
     }
    
 async function createProposal() {
@@ -26,7 +30,7 @@ async function createProposal() {
    const signer = await provider.getSigner();
    const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
-   const createProposals = await contracts.createProposal(description);
+   const createProposals = await contracts.CreateProposal(description);
    createProposals.wait();
    setDescription("");
 

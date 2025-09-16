@@ -10,6 +10,7 @@
     "@types/node": "^22.18.3",
     "chai": "^6.0.1",
     "hardhat": "^2.26.3",
+    "ts-node": "^10.9.2",
     "typescript": "~5.8.0",
     "viem": "^2.37.5"
   },
@@ -19,6 +20,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "type": "module"
+  "description": ""
 }

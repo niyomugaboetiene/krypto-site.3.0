@@ -28,6 +28,8 @@ async function createProposal() {
 
    const createProposals = await contracts.createProposal(description);
    setDescription("");
+
+   alert("Proposal Created Successfully");
 }
 
 }

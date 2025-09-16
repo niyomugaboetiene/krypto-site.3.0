@@ -3,7 +3,7 @@ import Menu from './pages/menu'
 import Footer from './pages/footer'
 import Wallet from './pages/wallet'
 import About from './pages/about'
-import DAO  from './pages/dao'
+import Dao  from './pages/dao'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -17,7 +17,7 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/wallet' element={<Wallet />} />
             <Route path='/about' element={<About />} />
-            <Route path='/dao' element={<DAO />} />
+            <Route path='/dao' element={<Dao />} />
           </Routes>      
         </div>
         <Footer />

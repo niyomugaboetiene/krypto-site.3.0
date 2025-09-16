@@ -32,5 +32,18 @@ async function createProposal() {
    alert("Proposal Created Successfully");
 }
 
+return (
+    <div>
+        <button onClick={ConnectToWallet}>Connect</button>
+
+        <div>
+            <input type="text"  
+            value={description}
+               onChange={(e) => setDescription(e.target.value)}
+            />
+            <button onClick={createProposal}>Create</button>
+        </div>
+    </div>
+)
 }
 

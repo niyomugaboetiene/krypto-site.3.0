@@ -22,7 +22,10 @@ const Menu = () => {
                             navigate('/wallet')
                         }}>Wallet</p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
-                            navigate('/about');
+                            navigate('/wallet')
+                        }}>DAO</p>
+                        <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
+                            navigate('/dao');
                         }}>About Us</p>
                         <a href="https://niyomugaboetiene.onrender.com/contact" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-yellow-300 transition">Contact Us</a>
                     </div>

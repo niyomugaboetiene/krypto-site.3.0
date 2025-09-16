@@ -27,6 +27,7 @@ async function createProposal() {
    const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
    const createProposals = await contracts.createProposal(description);
+   createProposals.wait();
    setDescription("");
 
    alert("Proposal Created Successfully");

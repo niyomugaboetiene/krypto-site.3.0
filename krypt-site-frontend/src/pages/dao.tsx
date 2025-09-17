@@ -6,6 +6,7 @@ import daoSvg from "../../public/dao.gif";
 
 function Dao () {
     const [account, setAccount] = useState("");
+    const [name, setProposalName] = useState("");
     const [description, setDescription] = useState("");
     const [proposal, setProposal] = useState("");
 

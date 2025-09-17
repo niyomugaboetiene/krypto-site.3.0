@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useState } from "react";
 const ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+import daoSvg from "../../public/dao.gif";
 
 function Dao () {
     const [account, setAccount] = useState("");
@@ -39,7 +40,11 @@ async function createProposal() {
 
 return (
     <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
-        <aside>
+        <aside className="max-w-md">
+            <div className="shadow-2xl">
+                 <img src={daoSvg} alt="DAO Svg"
+                    className="rounded-lg" />
+            </div>
            <button onClick={ConnectToWallet}>Connect</button>
         </aside>
         <aside>

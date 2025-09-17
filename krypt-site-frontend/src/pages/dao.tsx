@@ -91,6 +91,10 @@ return (
         </aside>
         
     </div>
+
+    <div>
+        <h2>Created Proposal Section</h2>
+    </div>
     </div>
 )
 }

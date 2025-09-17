@@ -54,13 +54,42 @@ return (
                 <p className="bg-green-200 text-black rounded p-0 ps-4 font-bold">Connected to MetaMask</p>
             )}
         </aside>
-        <aside className="w-full lg:w-3/5 bg-gray-900 bg-opacity-50 p-8 rounded-xl shadow-2xl border border-purple-400 border-opacity-50">
+        <aside className="w-full lg:w-3/5 p-8">
+        <div className=" bg-gray-900 bg-opacity-50 p-8 border border-purple-300 rounded-xl shadow-2xl mb-6">
+            <h2 className="font-medium text-2xl text-center text-white mb-6">Create Proposal</h2>
             <input type="text"  
-            value={description}
-               onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                className="w-full p-3 bg-gray-800 outline-purple-800 text-white mb-6"
+                placeholder="Add Proposal Name"
+                 onChange={(e) => setDescription(e.target.value)}
             />
-            <button onClick={createProposal}>Create</button>
+            <input type="text"  
+                value={description}
+                className="w-full p-3 bg-gray-800 outline-purple-800 text-white mb-6"
+                placeholder="Add Description.."
+                 onChange={(e) => setDescription(e.target.value)}
+            />
+            <button onClick={createProposal}
+               className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              Create
+            </button>
+        </div>
+
+         <div>
+            <p className="text-md">You can create Proposal.By submitting a proposal, you give the community a chance to discuss, vote, and decide together on actions that shape the future of the project.
+             <div className="mb-2"></div>
+            <span className="">✨ Anyone with access can create a proposal.</span><br />
+
+            <span>📝 Add a clear description of your idea or request. </span><br />
+
+            <span>✅ Once submitted, the proposal will be visible to all members for voting.</span> <br />
+
+             <span>🔒 Every proposal is stored on the blockchain, ensuring transparency and immutability.</span> 
+             </p>
+          </div>
         </aside>
+        
     </div>
     </div>
 )

@@ -20,4 +20,13 @@ contract KryptoDAO {
             executed: false
         }));
     }
+
+    function GetProposal() public view returns(
+        string[] name,
+        string[] description,
+        uint256[] voteCount,
+        bool[] executed
+    ) {
+
+    }
 }

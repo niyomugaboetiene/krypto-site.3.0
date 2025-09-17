@@ -22,11 +22,24 @@ contract KryptoDAO {
     }
 
     function GetProposal() public view returns(
-        string[] name,
-        string[] description,
-        uint256[] voteCount,
-        bool[] executed
+        string[] memory name,
+        string[] memory description,
+        uint256[] memory voteCount,
+        bool[]  executed
     ) {
+         uint256 len = proposals.length;
 
-    }
+         name = new string[](len);
+         description = new string[](len);
+         voteCount = new uint256[](len);
+         executed = new bool[](len);
+
+
+         for (uint256 i; i <= len; i ++) {
+            name[i] = proposals[i];
+            description[i] = proposals[i];
+            voteCount[i] = proposals[i];
+            executed[i] = proposals[i];
+          };
+     }
 }

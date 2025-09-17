@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useState } from "react";
-const ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 import daoSvg from "../../public/dao.gif";
 
 function Dao () {
@@ -32,9 +32,10 @@ async function createProposal() {
    const signer = await provider.getSigner();
    const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
-   const createProposals = await contracts.CreateProposal(description);
+   const createProposals = await contracts.CreateProposal(name, description);
    createProposals.wait();
    setDescription("");
+   setProposalName("");
 
    alert("Proposal Created Successfully");
 }
@@ -65,10 +66,10 @@ return (
                  onChange={(e) => setDescription(e.target.value)}
             />
             <input type="text"  
-                value={description}
+                value={name}
                 className="w-full p-3 bg-gray-800 outline-purple-800 text-white mb-6"
                 placeholder="Add Description.."
-                 onChange={(e) => setDescription(e.target.value)}
+                 onChange={(e) => setProposalName(e.target.value)}
             />
             <button onClick={createProposal}
                className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"

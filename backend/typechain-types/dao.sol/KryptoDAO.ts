@@ -27,7 +27,7 @@ export interface KryptoDAOInterface extends Interface {
 
   encodeFunctionData(
     functionFragment: "CreateProposal",
-    values: [string]
+    values: [string, string]
   ): string;
   encodeFunctionData(
     functionFragment: "proposals",
@@ -85,7 +85,7 @@ export interface KryptoDAO extends BaseContract {
   ): Promise<this>;
 
   CreateProposal: TypedContractMethod<
-    [_description: string],
+    [_name: string, _description: string],
     [void],
     "nonpayable"
   >;
@@ -93,8 +93,9 @@ export interface KryptoDAO extends BaseContract {
   proposals: TypedContractMethod<
     [arg0: BigNumberish],
     [
-      [string, bigint, boolean] & {
+      [string, string, bigint, boolean] & {
         description: string;
+        name: string;
         voteCount: bigint;
         executed: boolean;
       }
@@ -108,14 +109,19 @@ export interface KryptoDAO extends BaseContract {
 
   getFunction(
     nameOrSignature: "CreateProposal"
-  ): TypedContractMethod<[_description: string], [void], "nonpayable">;
+  ): TypedContractMethod<
+    [_name: string, _description: string],
+    [void],
+    "nonpayable"
+  >;
   getFunction(
     nameOrSignature: "proposals"
   ): TypedContractMethod<
     [arg0: BigNumberish],
     [
-      [string, bigint, boolean] & {
+      [string, string, bigint, boolean] & {
         description: string;
+        name: string;
         voteCount: bigint;
         executed: boolean;
       }

@@ -35,16 +35,12 @@ contract KryptoDAO {
          executed = new bool[](len);
 
 
-         for (uint256 i; i <= len; i ++) {
-            name[i] = proposals[i];
-            description[i] = proposals[i];
-            voteCount[i] = proposals[i];
-            executed[i] = proposals[i];
-          }
+         for (uint256 i = 0; i <= len; i ++) {
             Proposal storage p = proposals[i];
             name[i] = p.name;
             description[i] = p.description;
             voteCount[i] = p.voteCount;
             executed[i] = p.executed;
+          }
           }
      }

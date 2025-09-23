@@ -22,12 +22,16 @@ import type {
 
 export interface KryptoDAOInterface extends Interface {
   getFunction(
-    nameOrSignature: "CreateProposal" | "proposals"
+    nameOrSignature: "CreateProposal" | "GetProposal" | "proposals"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "CreateProposal",
     values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "GetProposal",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "proposals",
@@ -36,6 +40,10 @@ export interface KryptoDAOInterface extends Interface {
 
   decodeFunctionResult(
     functionFragment: "CreateProposal",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "GetProposal",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "proposals", data: BytesLike): Result;
@@ -90,6 +98,19 @@ export interface KryptoDAO extends BaseContract {
     "nonpayable"
   >;
 
+  GetProposal: TypedContractMethod<
+    [],
+    [
+      [string[], string[], bigint[], boolean[]] & {
+        name: string[];
+        description: string[];
+        voteCount: bigint[];
+        executed: boolean[];
+      }
+    ],
+    "view"
+  >;
+
   proposals: TypedContractMethod<
     [arg0: BigNumberish],
     [
@@ -113,6 +134,20 @@ export interface KryptoDAO extends BaseContract {
     [_name: string, _description: string],
     [void],
     "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "GetProposal"
+  ): TypedContractMethod<
+    [],
+    [
+      [string[], string[], bigint[], boolean[]] & {
+        name: string[];
+        description: string[];
+        voteCount: bigint[];
+        executed: boolean[];
+      }
+    ],
+    "view"
   >;
   getFunction(
     nameOrSignature: "proposals"

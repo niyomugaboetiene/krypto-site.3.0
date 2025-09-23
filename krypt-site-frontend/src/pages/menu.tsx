@@ -17,7 +17,9 @@ const Menu = () => {
                     <div className="flex text-center justify-center font-bold text-white space-x-4 md:space-x-8 text-md md:text-lg">
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/')
-                        }}>Home</p>
+                        }}>
+                            Home
+                        </p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/wallet')
                         }}>
@@ -30,8 +32,12 @@ const Menu = () => {
                         </p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/about');
-                        }}>About Us</p>
-                        <a href="https://niyomugaboetiene.onrender.com/contact" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-yellow-300 transition">Contact Us</a>
+                        }}>
+                            About Us
+                        </p>
+                        <a href="https://niyomugaboetiene.onrender.com/contact" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-yellow-300 transition">
+                            Contact Us
+                        </a>
                     </div>
                 </div>
             </div>

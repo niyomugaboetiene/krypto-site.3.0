@@ -25,7 +25,7 @@ contract KryptoDAO {
         string[] memory name,
         string[] memory description,
         uint256[] memory voteCount,
-        bool[]  executed
+        bool[]  memory executed
     ) {
          uint256 len = proposals.length;
 
@@ -40,6 +40,11 @@ contract KryptoDAO {
             description[i] = proposals[i];
             voteCount[i] = proposals[i];
             executed[i] = proposals[i];
-          };
+          }
+            Proposal storage p = proposals[i];
+            name[i] = p.name;
+            description[i] = p.description;
+            voteCount[i] = p.voteCount;
+            executed[i] = p.executed;
+          }
      }
-}

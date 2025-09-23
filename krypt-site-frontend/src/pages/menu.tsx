@@ -20,12 +20,16 @@ const Menu = () => {
                         }}>Home</p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/wallet')
-                        }}>Wallet</p>
+                        }}>
+                            Wallet
+                        </p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
-                            navigate('/wallet')
-                        }}>DAO</p>
+                            navigate('/dao')
+                        }}>
+                            DAO
+                        </p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
-                            navigate('/dao');
+                            navigate('/about');
                         }}>About Us</p>
                         <a href="https://niyomugaboetiene.onrender.com/contact" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-yellow-300 transition">Contact Us</a>
                     </div>

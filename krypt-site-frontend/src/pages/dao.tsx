@@ -1,14 +1,14 @@
 import { ethers } from "ethers";
-// import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
+import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useState } from "react";
-// const ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+const ADDRESS = "0xC3cE6b8FF58976CCb0D81a3C6E7DF00deC4010D3";
 import daoSvg from "../../public/dao.gif";
 
 function Dao () {
     const [account, setAccount] = useState("");
     const [name, setProposalName] = useState("");
     const [description, setDescription] = useState("");
-    // const [proposal, setProposal] = useState("");
+    const [proposal, setProposal] = useState("");
 
    async function ConnectToWallet() {
       if (!window.ethereum) {
@@ -28,12 +28,12 @@ function Dao () {
    
 async function createProposal() {
     if (!description) return;
-//    const provider = new ethers.BrowserProvider(window.ethereum);
-//    const signer = await provider.getSigner();
-//    const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
+   const provider = new ethers.BrowserProvider(window.ethereum);
+   const signer = await provider.getSigner();
+   const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
-//    const createProposals = await contracts.CreateProposal(name, description);
-//    createProposals.wait();
+   const createProposals = await contracts.CreateProposal(name, description);
+   createProposals.wait();
    setDescription("");
    setProposalName("");
 

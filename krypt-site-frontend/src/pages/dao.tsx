@@ -13,6 +13,7 @@ function Dao () {
    async function ConnectToWallet() {
       if (!window.ethereum) {
           alert("Connect to metamask first");
+          
           return;
     }
 

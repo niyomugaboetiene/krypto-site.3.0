@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useState } from "react";
-const ADDRESS = "0xC3cE6b8FF58976CCb0D81a3C6E7DF00deC4010D3";
+const ADDRESS = "0xA064200c61c9853Dcc7c002E6482120A43adB1A6";
 import daoSvg from "../../public/dao.gif";
 
 function Dao () {
@@ -20,6 +20,12 @@ function Dao () {
     try {
          const provider = new ethers.BrowserProvider(window.ethereum);
          const accounts = await provider.send("eth_requestAccounts", []);
+         const network = await provider.getNetwork();
+         console.log("Netowrk", network, network.chainId);
+         if (Number(network.chainId) !== 11155111) {
+            alert("Please switch MetaMask to sepolia Network");
+            return;
+         }
          setAccount(accounts[0]);
          alert("Connected successfully");
     } catch (error) {

@@ -96,7 +96,7 @@ function Dao () {
         const proposalList = await contract.GetProposal();
         const formattedProposals = await proposalList[0].map((name, index) => ({
             id: index,
-            name: name.
+            name: name,
             description: proposalList[1][index],
             voteCount: proposalList[2][index].toString(),
             executed: proposalList[3][index]
@@ -168,8 +168,8 @@ return (
             </aside>
         </div>
        <div className="max-w-6xl mx-auto mt-8">
-             <h2 className="text-2xl font-medium"> Created Proposal</h2>
-             
+             <h2 className="text-2xl font-medium">Created Proposal</h2>
+
        </div>
     </div>
 

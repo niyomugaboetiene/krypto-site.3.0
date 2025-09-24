@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const ADDRESS = "0xA064200c61c9853Dcc7c002E6482120A43adB1A6";
 import daoSvg from "../../public/dao.gif";
 
@@ -8,7 +8,8 @@ function Dao () {
     const [account, setAccount] = useState("");
     const [name, setProposalName] = useState("");
     const [description, setDescription] = useState("");
-    const [proposal, setProposal] = useState("");
+    const [proposal, setProposal] = useState([]);
+    const [loading, setLoading] = useState(false);
 
   async function ConnectToWallet() {
     if (!window.ethereum) {
@@ -35,6 +36,8 @@ function Dao () {
                 const newProvider = new ethers.BrowserProvider(window.ethereum);
                 const newNetwork = await newProvider.getNetwork();
                 console.log("Switched to network:", newNetwork);
+
+                await fetchProposal();
                 
             } catch (switchError) {
                 console.error("Failed to switch network:", switchError);
@@ -70,6 +73,9 @@ function Dao () {
         setDescription("");
         setProposalName("");
         alert("Proposal Created Successfully on Sepolia!");   
+
+        // load proposal after creating new one
+        await fetchProposal();
     } catch (error) {
         console.error("ERROR: ", error);
         
@@ -82,6 +88,30 @@ function Dao () {
         }
     }
 }
+
+    const fetchProposal = async () => {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, provider);
+
+        const proposalList = await contract.GetProposal();
+        const formattedProposals = await proposalList[0].map((name, index) => ({
+            id: index,
+            name: name.
+            description: proposalList[1][index],
+            voteCount: proposalList[2][index].toString(),
+            executed: proposalList[3][index]
+        }));
+
+        setProposal(formattedProposals);
+    };
+
+useEffect(() => {
+  if (account) {
+    await fetchProposal();
+  }
+
+}, []);
+
 return (
     <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
         <div className="flex flex-col lg:flex-row items-start justify-center gap-10 max-w-6xl mx-auto">
@@ -137,6 +167,10 @@ return (
                 </div>
             </aside>
         </div>
+       <div className="max-w-6xl mx-auto mt-8">
+             <h2 className="text-2xl font-medium"> Created Proposal</h2>
+             
+       </div>
     </div>
 
 )

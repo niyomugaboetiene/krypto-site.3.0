@@ -13,7 +13,7 @@ function Dao () {
    async function ConnectToWallet() {
       if (!window.ethereum) {
           alert("Connect to metamask first");
-          
+
           return;
     }
 
@@ -33,12 +33,17 @@ async function createProposal() {
    const signer = await provider.getSigner();
    const contracts = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
-   const createProposals = await contracts.CreateProposal(name, description);
-   createProposals.wait();
-   setDescription("");
-   setProposalName("");
-
-   alert("Proposal Created Successfully");
+   try {
+        const createProposals = await contracts.CreateProposal(name, description);
+        await createProposals.wait();
+        setDescription("");
+        setProposalName("");
+        alert("Proposal Created Successfully");   
+   } catch (error) {
+       console.error("ERROR: ", error);
+       alert("Transaction failed. make sure you have ETH");
+   }
+ 
 }
 
 return (

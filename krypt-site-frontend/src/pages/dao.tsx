@@ -23,7 +23,7 @@ function Dao () {
         
         console.log("Network", network, network.chainId);
 
-        if (network.chainId !== 11155111n) { /
+        if (network.chainId !== 11155111n) { 
             alert("Please switch to Sepolia network in MetaMask");
             
             try {
@@ -59,10 +59,9 @@ function Dao () {
     const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
     try {
-        // First, check the network
         const network = await provider.getNetwork();
         if (network.chainId !== 11155111n) {
-            alert("❌ Please switch to Sepolia network first!");
+            alert(" Please switch to Sepolia network first!");
             return;
         }
 
@@ -100,7 +99,7 @@ return (
                 ) : (
                     <div>
                         <p className="bg-green-200 text-black rounded p-2 font-bold mb-2">
-                            ✅ Connected: {account.substring(0, 6)}...{account.substring(38)}
+                             Connected: {account.substring(0, 6)}...{account.substring(38)}
                         </p>
                         <p className="bg-blue-200 text-black rounded p-2 font-bold">
                             🌐 Sepolia Testnet
@@ -113,7 +112,6 @@ return (
                 <div className="bg-gray-900 bg-opacity-50 p-8 border border-purple-300 rounded-xl shadow-2xl mb-6">
                     <h2 className="font-medium text-2xl text-center text-white mb-6">Create Proposal</h2>
                     
-                    {/* Fixed the input order */}
                     <input 
                         type="text"  
                         value={name}

@@ -19,7 +19,7 @@ contract KryptoDAO {
             voteCount: 0,
             executed: false
         }));
-    }
+    }`
 
     function GetProposal() public view returns(
         string[] memory name,
@@ -44,5 +44,11 @@ contract KryptoDAO {
           }
 
           return (name, description, voteCount, executed);
+          }
+
+
+          function VoteProposal (uint256 proposalId, address voter) public {
+                 require((!hasVoted[msg.sender]), "You're already voted");
+                 require(());
           }
      }

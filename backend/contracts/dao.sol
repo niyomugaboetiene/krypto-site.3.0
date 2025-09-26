@@ -47,8 +47,11 @@ contract KryptoDAO {
           }
 
 
-          function VoteProposal (uint256 proposalId, address voter) public {
+          function VoteProposal (uint256 proposalId) public {
                  require((!hasVoted[msg.sender]), "You're already voted");
-                 require(());
+                 require(proposals.length > proposalId, "Invalid proposal");
+
+                 proposals[proposalId].voteCount + 1;
+                 proposals[msg.sender] = true;
           }
      }

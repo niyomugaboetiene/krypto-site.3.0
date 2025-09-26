@@ -138,7 +138,7 @@ function Dao() {
                
             alert("you voted successfully"); 
         } catch (error) {
-            console.log("ERROR:", error.message);
+            console.log("ERROR:", error);
             alert("Error during vote");
         }
   

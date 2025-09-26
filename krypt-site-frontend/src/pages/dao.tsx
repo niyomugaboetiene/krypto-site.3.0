@@ -125,20 +125,23 @@ function Dao() {
     }, [account]);
 
 
-    async function Vote() {
-         const provider = new ethers.BrowserProvider(window.ethereum);
-         const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, provider);
+    async function Vote(proposalId) {
+        try {
+            if (!window.ethereum) return;
+        
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
+            const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
-         const proposalData = await contract.GetProposal();
-            
-         const formattedProposals = proposalData[0].map((index) => ({
-                id: index,
-            }));
-         const vote = await contract.VoteProposal(formattedProposals);
-
-         if (vote == true) {
-            alert("you voted successfully");
-         }
+            const vote = await contract.VoteProposal(proposalId);
+            vote.wait();
+               
+            alert("you voted successfully"); 
+        } catch (error) {
+            console.log("ERROR:", error.message);
+            alert("Error during vote");
+        }
+  
 
     }
 
@@ -220,7 +223,8 @@ function Dao() {
                                         {proposal.executed ? 'Executed' : 'Pending'}
                                     </span>
                                 </div>
-                                <button className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded hover:from-blue-600 hover:to-purple-600 transition">
+                                <button className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded hover:from-blue-600 hover:to-purple-600 transition"
+                                  onClick={() => Vote(proposal.id)}>
                                     Vote on Proposal
                                 </button>
                             </div>

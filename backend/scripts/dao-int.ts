@@ -14,6 +14,11 @@ export async function main() {
     for (let i = 0; i < _name.length; i ++) {
         console.log(_name[i], description[i], voteCount[i], executed[i]);
     }
+
+    const vote = await kryptodao.VoteProposal(1);
+    if (vote) {
+        console.log("Voted successfully");
+    }
 }
 
 main().catch((error) => {

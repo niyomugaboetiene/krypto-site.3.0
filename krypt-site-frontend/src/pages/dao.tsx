@@ -126,7 +126,11 @@ function Dao() {
 
 
     async function Vote() {
-        
+         const provider = new ethers.BrowserProvider(window.ethereum);
+         const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, provider);
+         
+         const vote = await contract.VoteProposal()
+
     }
 
     return (

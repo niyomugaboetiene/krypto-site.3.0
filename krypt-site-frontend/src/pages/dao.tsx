@@ -135,7 +135,10 @@ function Dao() {
                 id: index,
             }));
          const vote = await contract.VoteProposal(formattedProposals);
-         
+
+         if (vote == true) {
+            alert("you voted successfully");
+         }
 
     }
 

@@ -128,8 +128,14 @@ function Dao() {
     async function Vote() {
          const provider = new ethers.BrowserProvider(window.ethereum);
          const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, provider);
+
+         const proposalData = await contract.GetProposal();
+            
+         const formattedProposals = proposalData[0].map((index) => ({
+                id: index,
+            }));
+         const vote = await contract.VoteProposal(formattedProposals);
          
-         const vote = await contract.VoteProposal()
 
     }
 

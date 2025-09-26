@@ -19,7 +19,7 @@ contract KryptoDAO {
             voteCount: 0,
             executed: false
         }));
-    }`
+    }
 
     function GetProposal() public view returns(
         string[] memory name,
@@ -52,6 +52,6 @@ contract KryptoDAO {
                  require(proposals.length > proposalId, "Invalid proposal");
 
                  proposals[proposalId].voteCount + 1;
-                 proposals[msg.sender] = true;
+                 hasVoted[msg.sender] = true;
           }
      }

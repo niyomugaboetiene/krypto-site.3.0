@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useEffect, useState } from "react";
-const ADDRESS = "0xA064200c61c9853Dcc7c002E6482120A43adB1A6";
+const ADDRESS = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
 import daoSvg from "../../public/dao.gif";
 
 function Dao() {
@@ -134,7 +134,7 @@ function Dao() {
             const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
 
             const vote = await contract.VoteProposal(proposalId);
-            vote.wait();
+            await vote.wait();
                
             alert("you voted successfully"); 
         } catch (error) {

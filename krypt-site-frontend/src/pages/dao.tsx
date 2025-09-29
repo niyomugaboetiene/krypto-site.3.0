@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import KryptoDAO from "../../../backend/artifacts/contracts/dao.sol/KryptoDAO.json";
 import { useEffect, useState } from "react";
-const ADDRESS = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
+const ADDRESS = "0x5C87c2b51924a1Cf53F4b90e1BCd48a28f74A361";
 import daoSvg from "../../public/dao.gif";
 
 function Dao() {

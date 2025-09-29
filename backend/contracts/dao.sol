@@ -52,7 +52,7 @@ contract KryptoDAO {
                  require(!proposals[proposalId].executed, "Already executed");
                  require(proposals.length > proposalId, "Invalid proposal");
 
-                 proposals[proposalId].voteCount + 1;
+                 proposals[proposalId].voteCount += 1;
                  hasVoted[msg.sender] = true;
           }
      }

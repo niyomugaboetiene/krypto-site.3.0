@@ -10,7 +10,7 @@ contract KryptoDAO {
     }
 
     Proposal[] public proposals;
-    mapping (address => bool) public hasVoted;
+    mapping (uint256 => mapping(address => bool)) public hasVoted;
 
     function CreateProposal(string memory _name, string memory _description) public {
         proposals.push(Proposal({
@@ -46,12 +46,12 @@ contract KryptoDAO {
     }
 
     function VoteProposal(uint256 proposalId) public {
-        require(!hasVoted[msg.sender], "You've already voted");
+        require(!hasVoted[proposalId][msg.sender], "You've already voted");
         require(!proposals[proposalId].executed, "Already executed");
         require(proposalId < proposals.length, "Invalid proposal");
 
         proposals[proposalId].voteCount += 1;
-        hasVoted[msg.sender] = true;
+        hasVoted[proposalId][msg.sender] = true;
     }
 
     function  Execute(uint256 proposalId) public {

@@ -50,7 +50,7 @@ export interface KryptoDAOInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "hasVoted",
-    values: [AddressLike]
+    values: [BigNumberish, AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "proposals",
@@ -148,7 +148,11 @@ export interface KryptoDAO extends BaseContract {
     "nonpayable"
   >;
 
-  hasVoted: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  hasVoted: TypedContractMethod<
+    [arg0: BigNumberish, arg1: AddressLike],
+    [boolean],
+    "view"
+  >;
 
   proposals: TypedContractMethod<
     [arg0: BigNumberish],
@@ -196,7 +200,11 @@ export interface KryptoDAO extends BaseContract {
   ): TypedContractMethod<[proposalId: BigNumberish], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "hasVoted"
-  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  ): TypedContractMethod<
+    [arg0: BigNumberish, arg1: AddressLike],
+    [boolean],
+    "view"
+  >;
   getFunction(
     nameOrSignature: "proposals"
   ): TypedContractMethod<

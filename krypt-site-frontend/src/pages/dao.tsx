@@ -146,6 +146,26 @@ function Dao() {
 
     }
 
+    async function Execute(proposalId) {
+
+      try {
+         if (!window.ethereum) return;
+        
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
+            const contract = new ethers.Contract(ADDRESS, KryptoDAO.abi, signer);
+
+            const execute = await contract.Execute(proposalId);
+            await execute.wait();
+
+            alert("Proposal executed successfully");
+        } catch (error) {
+            console.error("ERROR:", error);
+            alert("Error during execution");
+        }
+  
+    }
+
     return (
         <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
             <div className="flex flex-col lg:flex-row items-start justify-center gap-10 max-w-6xl mx-auto">
@@ -227,6 +247,10 @@ function Dao() {
                                 <button className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded hover:from-blue-600 hover:to-purple-600 transition"
                                   onClick={() => Vote(proposal.id)}>
                                     Vote on Proposal
+                                </button>
+                                <button className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded hover:from-blue-600 hover:to-purple-600 transition"
+                                  onClick={() => Execute(proposal.id)}>
+                                    Execute
                                 </button>
                             </div>
                         ))}

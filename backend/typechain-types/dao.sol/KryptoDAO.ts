@@ -8,6 +8,7 @@ import type {
   FunctionFragment,
   Result,
   Interface,
+  AddressLike,
   ContractRunner,
   ContractMethod,
   Listener,
@@ -26,6 +27,7 @@ export interface KryptoDAOInterface extends Interface {
       | "CreateProposal"
       | "GetProposal"
       | "VoteProposal"
+      | "hasVoted"
       | "proposals"
   ): FunctionFragment;
 
@@ -40,6 +42,10 @@ export interface KryptoDAOInterface extends Interface {
   encodeFunctionData(
     functionFragment: "VoteProposal",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "hasVoted",
+    values: [AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "proposals",
@@ -58,6 +64,7 @@ export interface KryptoDAOInterface extends Interface {
     functionFragment: "VoteProposal",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "hasVoted", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "proposals", data: BytesLike): Result;
 }
 
@@ -114,10 +121,10 @@ export interface KryptoDAO extends BaseContract {
     [],
     [
       [string[], string[], bigint[], boolean[]] & {
-        name: string[];
-        description: string[];
-        voteCount: bigint[];
-        executed: boolean[];
+        names: string[];
+        descriptions: string[];
+        voteCounts: bigint[];
+        executedFlags: boolean[];
       }
     ],
     "view"
@@ -129,12 +136,14 @@ export interface KryptoDAO extends BaseContract {
     "nonpayable"
   >;
 
+  hasVoted: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+
   proposals: TypedContractMethod<
     [arg0: BigNumberish],
     [
       [string, string, bigint, boolean] & {
-        description: string;
         name: string;
+        description: string;
         voteCount: bigint;
         executed: boolean;
       }
@@ -159,10 +168,10 @@ export interface KryptoDAO extends BaseContract {
     [],
     [
       [string[], string[], bigint[], boolean[]] & {
-        name: string[];
-        description: string[];
-        voteCount: bigint[];
-        executed: boolean[];
+        names: string[];
+        descriptions: string[];
+        voteCounts: bigint[];
+        executedFlags: boolean[];
       }
     ],
     "view"
@@ -171,13 +180,16 @@ export interface KryptoDAO extends BaseContract {
     nameOrSignature: "VoteProposal"
   ): TypedContractMethod<[proposalId: BigNumberish], [void], "nonpayable">;
   getFunction(
+    nameOrSignature: "hasVoted"
+  ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  getFunction(
     nameOrSignature: "proposals"
   ): TypedContractMethod<
     [arg0: BigNumberish],
     [
       [string, string, bigint, boolean] & {
-        description: string;
         name: string;
+        description: string;
         voteCount: bigint;
         executed: boolean;
       }

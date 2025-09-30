@@ -3,16 +3,16 @@ pragma solidity ^0.8.28;
 
 contract KryptoDAO {
     struct Proposal {
-        string description;
         string name;
+        string description;
         uint256 voteCount;
         bool executed;
     }
 
     Proposal[] public proposals;
-    mapping (address => bool) hasVoted;
+    mapping (address => bool) public hasVoted;
 
-    function CreateProposal (string memory _name, string memory _description) public {
+    function CreateProposal(string memory _name, string memory _description) public {
         proposals.push(Proposal({
             name: _name,
             description: _description,
@@ -22,37 +22,35 @@ contract KryptoDAO {
     }
 
     function GetProposal() public view returns(
-        string[] memory name,
-        string[] memory description,
-        uint256[] memory voteCount,
-        bool[]  memory executed
+        string[] memory names,
+        string[] memory descriptions,
+        uint256[] memory voteCounts,
+        bool[] memory executedFlags
     ) {
-         uint256 len = proposals.length;
+        uint256 len = proposals.length;
 
-         name = new string[](len);
-         description = new string[](len);
-         voteCount = new uint256[](len);
-         executed = new bool[](len);
+        names = new string[](len);
+        descriptions = new string[](len);
+        voteCounts = new uint256[](len);
+        executedFlags = new bool[](len);
 
-
-         for (uint256 i = 0; i < len; i ++) {
+        for (uint256 i = 0; i < len; i++) {
             Proposal storage p = proposals[i];
-            name[i] = p.name;
-            description[i] = p.description;
-            voteCount[i] = p.voteCount;
-            executed[i] = p.executed;
-          }
+            names[i] = p.name;
+            descriptions[i] = p.description;
+            voteCounts[i] = p.voteCount;
+            executedFlags[i] = p.executed;
+        }
 
-          return (name, description, voteCount, executed);
-          }
+        return (names, descriptions, voteCounts, executedFlags);
+    }
 
+    function VoteProposal(uint256 proposalId) public {
+        require(!hasVoted[msg.sender], "You've already voted");
+        require(!proposals[proposalId].executed, "Already executed");
+        require(proposalId < proposals.length, "Invalid proposal");
 
-          function VoteProposal (uint256 proposalId) public {
-                 require((!hasVoted[msg.sender]), "You're already voted");
-                 require(!proposals[proposalId].executed, "Already executed");
-                 require(proposals.length > proposalId, "Invalid proposal");
-
-                 proposals[proposalId].voteCount += 1;
-                 hasVoted[msg.sender] = true;
-          }
-     }
+        proposals[proposalId].voteCount += 1;
+        hasVoted[msg.sender] = true;
+    }
+}

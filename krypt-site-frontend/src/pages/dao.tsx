@@ -77,6 +77,7 @@ function Dao() {
             setDescription("");
             setProposalName("");
             alert("Proposal Created Successfully on Sepolia!");
+            console.log("Proposals:", proposals);
             
             // Refresh proposals after creating new one
             await fetchProposals();
@@ -159,6 +160,7 @@ function Dao() {
             await execute.wait();
 
             alert("Proposal executed successfully");
+            await fetchProposals();
         } catch (error) {
             console.error("ERROR:", error);
             alert("Error during execution");

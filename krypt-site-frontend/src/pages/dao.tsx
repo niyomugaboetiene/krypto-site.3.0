@@ -137,6 +137,7 @@ function Dao() {
             await vote.wait();
                
             alert("you voted successfully"); 
+            await fetchProposals(); // ? refresh after voting
         } catch (error) {
             console.log("ERROR:", error);
             alert("Error during vote");

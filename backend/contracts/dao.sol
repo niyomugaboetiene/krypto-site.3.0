@@ -53,4 +53,13 @@ contract KryptoDAO {
         proposals[proposalId].voteCount += 1;
         hasVoted[msg.sender] = true;
     }
+
+    function  Execute(uint256 proposalId) public {
+        require(proposalId < proposals.length, "Invalid proposal");
+        require(!proposals[proposalId].executed, "Already executed");
+
+        if (proposals[proposalId].voteCount > 1) {
+             proposals[proposalId].executed = true;
+        }
+    }
 }

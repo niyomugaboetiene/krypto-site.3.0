@@ -10,15 +10,19 @@ export async function main() {
     createProposal.wait();
     console.log("Proposal created");
 
-    const [_name, description, voteCount, executed ] = await kryptodao.GetProposal();
-    for (let i = 0; i < _name.length; i ++) {
-        console.log(_name[i], description[i], voteCount[i], executed[i]);
-    }
+    // const [_name, description, voteCount, executed ] = await kryptodao.GetProposal();
+    // for (let i = 0; i < _name.length; i ++) {
+    //     console.log(_name[i], description[i], voteCount[i], executed[i]);
+    // }
 
     const vote = await kryptodao.VoteProposal(1);
     if (vote) {
         console.log("Voted successfully");
     }
+
+    const execute = await kryptodao.Execute(0);
+    await execute.wait();
+    console.log("Executed");
 }
 
 main().catch((error) => {

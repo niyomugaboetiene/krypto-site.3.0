@@ -141,8 +141,13 @@ function Dao() {
             alert("you voted successfully"); 
             await fetchProposals(); // ? refresh after voting
         } catch (error: any) {
-            const errorMessage = error.reposnse?.error;
-            alert(errorMessage);
+            if (error.reason) {
+                alert(`ERROR: ${error.reason}`);
+            } else if (error.data && error.message) {
+                alert(`ERROR: ${error.data.message}`);
+            } else {
+                alert(`ERROR: ${error.message}`)
+            }
         }
   
 

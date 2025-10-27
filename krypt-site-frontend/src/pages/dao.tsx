@@ -10,6 +10,7 @@ function Dao() {
     const [description, setDescription] = useState("");
     const [proposals, setProposals] = useState([]); 
     const [loading, setLoading] = useState(false);
+    const [executed, setExecuted] = useState(false);
 
     async function ConnectToWallet() {
         if (!window.ethereum) {

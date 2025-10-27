@@ -261,7 +261,7 @@ function Dao() {
                                   onClick={() => Vote(proposal.id)}>
                                     {voted ? "VOte": "Voted"}
                                 </button>
-                                <button className="mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-3 rounded hover:from-blue-600 hover:to-purple-600 transition"
+                                <button className={`mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-3 rounded hover:from-blue-600 hover:to-purple-600 transition disabled:cursor-not-allowed`} disabled={executed}
                                   onClick={() => Execute(proposal.id)}>
                                     {executed ? "Executed": "Execute"}
                                 </button>

@@ -277,6 +277,10 @@ function Dao() {
                     </div>
                 )}
             </div>
+
+            <div>
+                <h2>Executed Proposal</h2>
+            </div>
         </div>
     );
 }

@@ -62,4 +62,10 @@ contract KryptoDAO {
              proposals[proposalId].executed = true;
         }
     }
+
+    function Executed() public {
+        if (proposals.executed) {
+            return proposals;
+        }
+    }
 }

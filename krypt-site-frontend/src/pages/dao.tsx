@@ -140,9 +140,9 @@ function Dao() {
                
             alert("you voted successfully"); 
             await fetchProposals(); // ? refresh after voting
-        } catch (error) {
-            console.log("ERROR:", error);
-            alert("Error during vote");
+        } catch (error: any) {
+            const errorMessage = error.reposnse?.error;
+            alert(errorMessage);
         }
   
 
@@ -161,10 +161,12 @@ function Dao() {
             await execute.wait();
 
             alert("Proposal executed successfully");
+            setExecuted(true);
             await fetchProposals();
-        } catch (error) {
+        } catch (error: any) {
             console.error("ERROR:", error);
-            alert("Error during execution");
+            const errorMessage = error.reposnse?.error;
+            alert(errorMessage);
         }
   
     }
@@ -253,7 +255,7 @@ function Dao() {
                                 </button>
                                 <button className="w-full mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded hover:from-blue-600 hover:to-purple-600 transition"
                                   onClick={() => Execute(proposal.id)}>
-                                    Execute
+                                    {executed ? "Executed": "Execute"}
                                 </button>
                             </div>
                         ))}

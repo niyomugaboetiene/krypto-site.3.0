@@ -257,7 +257,7 @@ function Dao() {
                                     </span>
                                 </div>
                                 <div className="flex justify-between">
-                               <button className="mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-3 rounded hover:from-blue-600 hover:to-purple-600 transition disabled:cursor-not-allowed" disabled={voted}
+                               <button className="mt-5 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-2 rounded hover:from-blue-600 hover:to-purple-600 transition disabled:cursor-not-allowed" disabled={voted}
                                   onClick={() => Vote(proposal.id)}>
                                     {voted ? "VOte": "Voted"}
                                 </button>

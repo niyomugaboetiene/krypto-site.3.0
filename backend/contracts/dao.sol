@@ -63,9 +63,8 @@ contract KryptoDAO {
         }
     }
 
-    function Executed() public {
-        if (proposals.executed) {
-            return proposals;
-        }
+    function Executed()  public view returns (Proposal[] memory) {
+         return proposals;
     }
+
 }

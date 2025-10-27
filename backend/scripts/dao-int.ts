@@ -23,6 +23,8 @@ export async function main() {
     const execute = await kryptodao.Execute(0);
     await execute.wait();
     console.log("Executed");
+
+    const getExecuted = 
 }
 
 main().catch((error) => {

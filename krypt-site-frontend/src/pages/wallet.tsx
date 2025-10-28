@@ -59,6 +59,11 @@ const Wallet = () => {
         }
     }
 
+    async function TrackAllTransaction() {
+      const provider =  ethers.provider;
+
+    }
+
     return (
           <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">
             <div className="flex flex-col lg:flex-row items-start justify-center gap-10 max-w-6xl mx-auto">

@@ -67,7 +67,14 @@ const Wallet = () => {
       const txList = [];
 
       for (let i = latestBlock; i >= latestBlock - 10; i --) {
-        
+         const block = await provider.getBlock(i, true);
+         if (block && block.transactions.length > 0) {
+          for (const tx of block.transactions) {
+            txList.push({
+              
+            })
+          }
+         } 
       }
 
     }

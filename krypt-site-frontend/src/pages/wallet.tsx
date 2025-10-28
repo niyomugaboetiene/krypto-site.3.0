@@ -9,7 +9,7 @@ const Wallet = () => {
     const [network, setNetwork] = useState<string>("Not Connected");
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string>("");
-    const [transactionList, setTransactionList] = useState<null>
+    const [transactions, setTransactions] = useState([]);
 
 
     const ConnectToWallet = async () => {

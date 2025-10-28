@@ -27,6 +27,7 @@ export async function main() {
     const allProposal = await kryptodao.Executed();
     const executed = allProposal.filter(p => p.executed);
     console.log(executed);
+    
 }
 
 main().catch((error) => {

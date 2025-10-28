@@ -61,6 +61,7 @@ const Wallet = () => {
     }
 
     async function TrackAllTransaction() {
+      try {
       const provider =  new ethers.BrowserProvider(window.ethereum);
 
       // Get latest block number
@@ -78,9 +79,14 @@ const Wallet = () => {
               hash: tx.hash,
             });
           }
+           setTransactions(txList);
          } 
-      }
-      setTransactions(txList);
+      }     
+      } catch(error) {
+          console.error(error);
+          
+      }    
+
     }
 
     useEffect(() => {

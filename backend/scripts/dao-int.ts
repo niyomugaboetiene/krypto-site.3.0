@@ -1,5 +1,6 @@
 import { ethers } from "hardhat";
 import { KryptoDAO } from "../typechain-types";
+import { any } from "hardhat/internal/core/params/argumentTypes";
 
 export async function main() {
     const address = "0x112eBA9763B61d800A59bF5e1F1236F0989F823E";
@@ -27,9 +28,10 @@ export async function main() {
     const allProposal = await kryptodao.Executed();
     const executed = allProposal.filter(p => p.executed);
     console.log(executed);
-    
+
 }
 
 main().catch((error) => {
     console.error("ERROR:", error)
+    process.exit(1);
 })

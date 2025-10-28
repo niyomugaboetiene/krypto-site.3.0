@@ -24,8 +24,9 @@ export async function main() {
     await execute.wait();
     console.log("Executed");
 
-    const getExecuted = await kryptodao.Executed();
-    console.log("Executed:", getExecuted);
+    const allProposal = await kryptodao.Executed();
+    const executed = allProposal.filter(p => p.executed);
+    console.log(executed);
 }
 
 main().catch((error) => {

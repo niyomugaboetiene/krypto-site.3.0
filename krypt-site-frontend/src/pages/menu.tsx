@@ -28,7 +28,7 @@ const Menu = () => {
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/dao')
                         }}>
-                            DAO
+                            Dao
                         </p>
                         <p className="cursor-pointer hover:text-yellow-300 transition" onClick={() => {
                             navigate('/about');

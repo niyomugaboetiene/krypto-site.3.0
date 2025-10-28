@@ -60,7 +60,15 @@ const Wallet = () => {
     }
 
     async function TrackAllTransaction() {
-      const provider =  ethers.provider;
+      const provider =  new ethers.BrowserProvider(window.ethereum);
+
+      // Get latest block number
+      const latestBlock = await provider.getBlockNumber();
+      const txList = [];
+
+      for (let i = latestBlock; i >= latestBlock - 10; i --) {
+        
+      }
 
     }
 

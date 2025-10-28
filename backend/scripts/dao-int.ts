@@ -32,9 +32,9 @@ export async function main() {
         voteCount: bigint,
         executed: boolean
     }
-    const executed = (allProposal as Proposal[].filter(
+    const executed = (allProposal as Proposal[]).filter(
         (p: Proposal) => p.executed
-    ));
+    );
     console.log(executed);
 
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import wallet from "../../public/wallet.gif";
 import { FaWallet } from "react-icons/fa";
 import { ethers } from "ethers";
@@ -9,7 +9,7 @@ const Wallet = () => {
     const [network, setNetwork] = useState<string>("Not Connected");
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string>("");
-    const [transactions, setTransactions] = useState([]);
+    const [transactions, setTransactions] = useState({});
 
 
     const ConnectToWallet = async () => {
@@ -80,7 +80,12 @@ const Wallet = () => {
           }
          } 
       }
+      setTransactions(txList);
     }
+
+    useEffect(() => {
+      TrackAllTransaction();
+    })
 
     return (
           <div className="min-h-screen py-8 px-4 bg-gradient-to-r from-blue-800 via-purple-500 to-blue-600">

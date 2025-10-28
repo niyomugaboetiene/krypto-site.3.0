@@ -61,33 +61,31 @@ const Wallet = () => {
     }
 
     async function TrackAllTransaction() {
-      try {
-      const provider =  new ethers.BrowserProvider(window.ethereum);
+  try {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const latestBlock = await provider.getBlockNumber();
+    const txList: any[] = [];
 
-      // Get latest block number
-      const latestBlock = await provider.getBlockNumber();
-      const txList = [];
-
-      for (let i = latestBlock; i >= latestBlock - 10; i --) {
-         const block = await provider.getBlock(i, true);
-         if (block && block.transactions.length > 0) {
-          for (const tx of block.transactions) {
-            txList.push({
-              from: tx.from,
-              to: tx.to,
-              value: ethers.formatEther(tx.value),
-              hash: tx.hash,
-            });
-          }
-           setTransactions(txList);
-         } 
-      }     
-      } catch(error) {
-          console.error(error);
-          
-      }    
-
+    for (let i = latestBlock; i >= latestBlock - 10; i--) {
+      const block = await provider.getBlock(i, true);
+      if (block && block.transactions.length > 0) {
+        for (const tx of block.transactions) {
+          txList.push({
+            from: tx.from,
+            to: tx.to,
+            value: ethers.formatEther(tx.value),
+            hash: tx.hash,
+          });
+        }
+      }
     }
+
+    setTransactions(txList);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
     useEffect(() => {
       TrackAllTransaction();
@@ -169,38 +167,50 @@ const Wallet = () => {
         </aside>
       </div>
 
-      <div>
-        <h2>Recent Transactions</h2>
+      <div className="mt-12">
+        <h2 className="text-2xl text-white font-bold text-center">Recent Transactions</h2>
            {transactions.length == 0 ? (
-              <p>No Transaction found</p>
+            <div className="p-4 border border-white w-[430px] ms-[700px] mt-9 bg-gray-600 rounded-lg">
+                 <p className="text-gray-400 text-2xl">No Transaction found</p>
+            </div>
            ) : (
-               <table>
-                <thead>
-                  <tr>
-                    <th>From</th>
-                    <th>Fto</th>
-                    <th>Value</th>
-                    <th>Hash</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {transactions.map((tx, index) => (
-                    <tr key={index}>
-                      <td>{tx.from}</td>
-                      <td>{tx.to}</td>
-                      <td>{tx.value}</td>
-                      <td>
-                        <a href={`https://sepolia.etherscan.io/tx/${tx.hash}`}
-                             target="_blank"
-                             rel="noopener noreferrer"
-                      >
-                        {tx.hash.slice(0, 10)}
-                      </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-               </table>
+              <div className="mt-10 bg-gray-900 bg-opacity-50 p-6 rounded-xl text-white">
+  <h2 className="text-2xl font-bold mb-4">Recent Transactions</h2>
+  {transactions.length === 0 ? (
+    <p className="text-gray-400">No transactions found.</p>
+  ) : (
+    <table className="w-full border border-gray-700">
+      <thead>
+        <tr className="bg-gray-800">
+          <th className="p-2 text-left">From</th>
+          <th className="p-2 text-left">To</th>
+          <th className="p-2 text-left">Value (ETH)</th>
+          <th className="p-2 text-left">Hash</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((tx, index) => (
+          <tr key={index} className="border-t border-gray-700">
+            <td className="p-2">{tx.from}</td>
+            <td className="p-2">{tx.to}</td>
+            <td className="p-2">{tx.value}</td>
+            <td className="p-2">
+              <a
+                href={`https://sepolia.etherscan.io/tx/${tx.hash}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                {tx.hash.slice(0, 10)}...
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )}
+</div>
+
            )}
       </div>
     </div>

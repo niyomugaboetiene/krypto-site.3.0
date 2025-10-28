@@ -9,7 +9,7 @@ const Wallet = () => {
     const [network, setNetwork] = useState<string>("Not Connected");
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string>("");
-    const [transactions, setTransactions] = useState({});
+    const [transactions, setTransactions] = useState<any[]>([]);
 
 
     const ConnectToWallet = async () => {
@@ -167,6 +167,41 @@ const Wallet = () => {
             </div>
           )}
         </aside>
+      </div>
+
+      <div>
+        <h2>Recent Transactions</h2>
+           {transactions.length == 0 ? (
+              <p>No Transaction found</p>
+           ) : (
+               <table>
+                <thead>
+                  <tr>
+                    <th>From</th>
+                    <th>Fto</th>
+                    <th>Value</th>
+                    <th>Hash</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((tx, index) => (
+                    <tr key={index}>
+                      <td>{tx.from}</td>
+                      <td>{tx.to}</td>
+                      <td>{tx.value}</td>
+                      <td>
+                        <a href={`https://sepolia.etherscan.io/tx/${tx.hash}`}
+                             target="_blank"
+                             rel="noopener noreferrer"
+                      >
+                        {tx.hash.slice(0, 10)}
+                      </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+               </table>
+           )}
       </div>
     </div>
   );

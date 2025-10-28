@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 import { KryptoDAO } from "../typechain-types";
 
 export async function main() {
-    const address = "0x8b9A24d230997448A46AD58ab2b3c299E6DC74cb";
+    const address = "0x112eBA9763B61d800A59bF5e1F1236F0989F823E";
     const factory = await ethers.getContractFactory("KryptoDAO");
     const kryptodao = factory.attach(address) as KryptoDAO;
 
@@ -24,7 +24,8 @@ export async function main() {
     await execute.wait();
     console.log("Executed");
 
-    const getExecuted = 
+    const getExecuted = await kryptodao.Executed();
+    console.log("Executed:", getExecuted);
 }
 
 main().catch((error) => {

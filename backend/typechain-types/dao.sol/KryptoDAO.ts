@@ -21,11 +21,33 @@ import type {
   TypedContractMethod,
 } from "../common";
 
+export declare namespace KryptoDAO {
+  export type ProposalStruct = {
+    name: string;
+    description: string;
+    voteCount: BigNumberish;
+    executed: boolean;
+  };
+
+  export type ProposalStructOutput = [
+    name: string,
+    description: string,
+    voteCount: bigint,
+    executed: boolean
+  ] & {
+    name: string;
+    description: string;
+    voteCount: bigint;
+    executed: boolean;
+  };
+}
+
 export interface KryptoDAOInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "CreateProposal"
       | "Execute"
+      | "Executed"
       | "GetProposal"
       | "VoteProposal"
       | "hasVoted"
@@ -40,6 +62,7 @@ export interface KryptoDAOInterface extends Interface {
     functionFragment: "Execute",
     values: [BigNumberish]
   ): string;
+  encodeFunctionData(functionFragment: "Executed", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "GetProposal",
     values?: undefined
@@ -62,6 +85,7 @@ export interface KryptoDAOInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "Execute", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "Executed", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "GetProposal",
     data: BytesLike
@@ -129,6 +153,8 @@ export interface KryptoDAO extends BaseContract {
     "nonpayable"
   >;
 
+  Executed: TypedContractMethod<[], [KryptoDAO.ProposalStructOutput[]], "view">;
+
   GetProposal: TypedContractMethod<
     [],
     [
@@ -181,6 +207,9 @@ export interface KryptoDAO extends BaseContract {
   getFunction(
     nameOrSignature: "Execute"
   ): TypedContractMethod<[proposalId: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "Executed"
+  ): TypedContractMethod<[], [KryptoDAO.ProposalStructOutput[]], "view">;
   getFunction(
     nameOrSignature: "GetProposal"
   ): TypedContractMethod<

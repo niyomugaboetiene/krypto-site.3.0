@@ -1,9 +1,8 @@
 import { ethers } from "hardhat";
 import { KryptoDAO } from "../typechain-types";
-import { any } from "hardhat/internal/core/params/argumentTypes";
 
 export async function main() {
-    const address = "0x112eBA9763B61d800A59bF5e1F1236F0989F823E";
+    const address = "0xe7C3EDd40ed6E0F0F90D0e39d6CF88AD8881bEec";
     const factory = await ethers.getContractFactory("KryptoDAO");
     const kryptodao = factory.attach(address) as KryptoDAO;
 
@@ -16,22 +15,25 @@ export async function main() {
     //     console.log(_name[i], description[i], voteCount[i], executed[i]);
     // }
 
-    const vote = await kryptodao.VoteProposal(1);
-    if (vote) {
-        console.log("Voted successfully");
-    }
+    // const vote = await kryptodao.VoteProposal(1);
+    // if (vote) {
+    //     console.log("Voted successfully");
+    // }
 
-    const execute = await kryptodao.Execute(0);
-    await execute.wait();
-    console.log("Executed");
+    // const execute = await kryptodao.Execute(0);
+    // await execute.wait();
+    // console.log("Executed");
 
     const allProposal = await kryptodao.Executed();
+
     interface Proposal {
         name: string,
         decription: string,
         voteCount: bigint,
         executed: boolean
     }
+
+
     const executed = (allProposal as Proposal[]).filter(
         (p: Proposal) => p.executed
     );

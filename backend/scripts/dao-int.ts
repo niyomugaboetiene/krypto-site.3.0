@@ -26,7 +26,15 @@ export async function main() {
     console.log("Executed");
 
     const allProposal = await kryptodao.Executed();
-    const executed = allProposal.filter(p => p.executed);
+    interface Proposal {
+        name: string,
+        decription: string,
+        voteCount: bigint,
+        executed: boolean
+    }
+    const executed = (allProposal as Proposal[].filter(
+        (p: Proposal) => p.executed
+    ));
     console.log(executed);
 
 }

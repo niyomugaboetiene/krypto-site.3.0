@@ -9,6 +9,7 @@ const Wallet = () => {
     const [network, setNetwork] = useState<string>("Not Connected");
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string>("");
+    const [transactionList, setTransactionList] = useState<null>
 
 
     const ConnectToWallet = async () => {
@@ -71,12 +72,14 @@ const Wallet = () => {
          if (block && block.transactions.length > 0) {
           for (const tx of block.transactions) {
             txList.push({
-              
-            })
+              from: tx.from,
+              to: tx.to,
+              value: ethers.formatEther(tx.value),
+              hash: tx.hash,
+            });
           }
          } 
       }
-
     }
 
     return (
